@@ -5,10 +5,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class Course {
-    private String name;
-    private String code;
+    private final String name;
+    private final String code;
     private Teacher teacher;
-    private List<Enrollment> enrollments = new ArrayList<>();
+    private final List<Enrollment> enrollments = new ArrayList<>();
+
+    public Course(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
 
     public String getName() {
         return name;

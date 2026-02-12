@@ -1,9 +1,11 @@
 package org.example;
 
-public class App 
+import org.example.scenario.DemoScenario;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        new DemoScenario().run();
     }
 }

@@ -2,10 +2,11 @@ package org.example.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Group {
-    private String name;
-    private List<Student> students = new ArrayList<>();
+    private final String name;
+    private final List<Student> students = new ArrayList<>();
 
     public Group(String name) {
         this.name = name;
@@ -24,5 +25,17 @@ public class Group {
 
     public List<Student> getStudents() {
         return students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return Objects.equals(name, group.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }

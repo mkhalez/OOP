@@ -5,20 +5,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class Student extends Person{
-    private String studentNumber;
+    private final String studentNumber;
     private Department department;
     private Group group;
-    private List<Enrollment> enrollments = new ArrayList<>();
+    private final List<Enrollment> enrollments = new ArrayList<>();
 
-    public Student(String id, String firstName, String lastName, String studentNumber, Department department, Group group) {
+    public Student(String id, String firstName, String lastName, String studentNumber) {
         super(id, firstName, lastName);
         this.studentNumber = studentNumber;
-
-        this.department = department;
-        department.addStudent(this);
-
-        this.group = group;
-        group.addStudent(this);
     }
 
     public void enrollToCourse(Course course) {
@@ -27,10 +21,6 @@ public class Student extends Person{
 
         enrollments.add(enrollment);
         course.addEnrollment(enrollment);
-    }
-
-    public void addEnrollment(Enrollment enrollment) {
-        enrollments.add(enrollment);
     }
 
     public double calculateAverageGrade() {
@@ -80,4 +70,11 @@ public class Student extends Person{
         return Objects.hash(super.hashCode(), studentNumber);
     }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
 }

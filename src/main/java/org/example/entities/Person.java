@@ -3,9 +3,9 @@ package org.example.entities;
 import java.util.Objects;
 
 public class Person {
-    private String id;
-    private String firstName;
-    private String lastName;
+    private final String id;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String id, String firstName, String lastName) {
         this.firstName = Objects.requireNonNull(firstName);

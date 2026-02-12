@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class University {
-    private String name;
-    private List<Faculty> faculties = new ArrayList<>();
+    private final String name;
+    private final List<Faculty> faculties = new ArrayList<>();
 
     public University(String name) {
         this.name = Objects.requireNonNull(name);

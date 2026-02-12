@@ -4,10 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Teacher {
-    private String employeeNumber;
+public class Teacher extends Person{
+    private final String employeeNumber;
     private Department department;
-    private List<Course> courses = new ArrayList<>();
+    private final List<Course> courses = new ArrayList<>();
+
+    public Teacher(String id, String firstName, String lastName, String employeeNumber) {
+        super(id, firstName, lastName);
+        this.employeeNumber = employeeNumber;
+    }
 
     public void assignToCourse(Course course) {
         if(courses.contains(course)) return;
@@ -25,10 +30,6 @@ public class Teacher {
 
     public String getEmployeeNumber() {
         return employeeNumber;
-    }
-
-    public void setEmployeeNumber(String employeeNumber) {
-        this.employeeNumber = employeeNumber;
     }
 
     public Department getDepartment() {
