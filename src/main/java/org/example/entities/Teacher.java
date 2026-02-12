@@ -3,6 +3,7 @@ package org.example.entities;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Teacher extends Person{
     private final String employeeNumber;
@@ -43,5 +44,19 @@ public class Teacher extends Person{
     public List<Course> getCourses() {
         return courses;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Teacher teacher = (Teacher) o;
+        return Objects.equals(employeeNumber, teacher.employeeNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), employeeNumber);
+    }
+
 
 }

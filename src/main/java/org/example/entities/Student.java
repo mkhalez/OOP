@@ -1,18 +1,26 @@
 package org.example.entities;
 
+import org.example.dto.FacultyAndDepartment;
+import org.example.dto.FacultyAndDepartmentNames;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Student extends Person{
     private final String studentNumber;
+    private Faculty faculty;
     private Department department;
     private Group group;
     private final List<Enrollment> enrollments = new ArrayList<>();
 
-    public Student(String id, String firstName, String lastName, String studentNumber) {
+    public Student(String id, String firstName, String lastName, String studentNumber,
+                   FacultyAndDepartment facultyAndDepartment, Group group) {
         super(id, firstName, lastName);
         this.studentNumber = studentNumber;
+        this.group = group;
+        this.faculty = facultyAndDepartment.faculty();
+        this.department = facultyAndDepartment.department();
     }
 
     public void enrollToCourse(Course course) {
@@ -76,5 +84,13 @@ public class Student extends Person{
 
     public Department getDepartment() {
         return department;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 }

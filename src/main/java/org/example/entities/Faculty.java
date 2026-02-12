@@ -45,4 +45,14 @@ public class Faculty {
     public int hashCode() {
         return Objects.hashCode(name);
     }
+
+    public Teacher getTeacherByEmployeeNumber(String employeeNumber) {
+        for(var d : departments) {
+            List<Teacher> teachers = d.getTeachers();
+            Teacher teacher = teachers.stream().filter(t -> t.getEmployeeNumber()
+                    .equals(employeeNumber)).findFirst().orElse(null);
+            if(teacher != null) return teacher;
+        }
+        return null;
+    }
 }

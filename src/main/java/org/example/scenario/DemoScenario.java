@@ -21,8 +21,8 @@ public class DemoScenario {
 
         Group group = new Group("453503");
 
-        Student student = new Student("HB38382", "Alexander", "Mikhalko", "student_2373238");
-        department.addStudent(student);
+//        Student student = new Student("HB38382", "Alexander", "Mikhalko", "student_2373238");
+//        department.addStudent(student);
 
 
 
