@@ -1,0 +1,136 @@
+@startuml
+
+class University { 
+    -id : int
+    -name : String
+    -facultyIds : List
+    +getFaculties() : void
+    +addFaculty() : void
+    +removeFaculty() : void 
+    +getName() : String 
+    +getId() : int 
+    +getFacultyIds() : List
+}
+
+class Classroom {
+    -id : int
+    -capacity : int
+    +getId() : int
+    +getCapcity() : int
+}
+
+class Department {
+    -id : int
+    -name : String 
+    -teacherIds : List
+    -studentIds : List
+    -subjectIds : List
+    +addTeacher() : void
+    +removeTeacher() : void
+    +removeStudent() : void
+    +addSubject() : void
+    +removeSubject() : void
+    +getId() : int
+    +getName() : String 
+    +getTeacherIds() : List
+    +getStudentIds() : List
+    +getSubjectIds() : List
+}
+
+class Faculty {
+    -id : int
+    -name : String 
+    -departmentIds : List
+    +getId() : int
+    +getName() : String 
+    +addDepartment() : void
+    +removeDepartment() : void
+    +getDepartmentIds() : List
+}
+
+class Grade {
+    -id : int
+    -value : int 
+    +getCourseId() : int
+    +getValue() : int
+}
+
+class Group {
+    -id : int 
+    -studentIds : List
+    +getName() : String
+    +addStudent() : void
+    +removeStudent() : void 
+    +getId() : int
+    +getStudentIds() : List
+}
+
+class Schedule {
+    -id : int 
+    -subjectId : int
+    -teacherId : int
+    -groupId : int 
+    -classroomId : int 
+    -date : LocalDateTime
+    +getId() : int 
+    +getSubjectId() : int 
+    +getTeacherId() : int 
+    +getGroupId() : int 
+    +getClassroomId() : int 
+    +getDate() : Date
+    +toString() : String
+}
+
+class Student {
+    -id : int 
+    -groupId : int 
+    -subjectAssessment : Map
+    +getId() : int 
+    +getGroupId() : int 
+    +setGroupId() : void
+    +getSubjectAssessment() : Map
+    +enrollToSubject() : void 
+    +assignGrade() : void
+    +calculateAverageGrade() : double
+}
+
+class Subject {
+    -id : int 
+    -description : int 
+    -teacherId : int
+    +setName() : void
+    +setDescription() : void 
+    +setTeacherId() : void 
+    +getTeacherId() : int 
+    +getId() : int 
+    +getDescription() : String 
+}
+
+class Teacher {
+    -id : int
+    -subjectIds : List
+    +getId() : int 
+    +getSubjectId() : List
+    +assignToSubject() : void 
+    +assignGrade() : void
+}
+
+class University {
+    -id : int 
+    -name : String 
+    -facultyIds : List
+    +getFaculties() : List
+    +addFaculty() : void 
+    +removeFaculty() : void
+    +getName() : int 
+    +getId() : int 
+    +getFacultyIds() : List 
+}
+
+class Executor {
+    +Run() : void 
+}
+
+Department ..> Teacher
+
+@enduml
