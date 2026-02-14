@@ -11,16 +11,12 @@ public class Group {
         this.id = id;
     }
 
-    public String getName(String name) {
-        return name;
-    }
-
     public void addStudent(Student student) {
         studentIds.add(student.getGroupId());
     }
 
-    public void removeStudent(int studentId) {
-        studentIds.remove(studentId);
+    public void removeStudent(Student student) {
+        studentIds.remove(student.getId());
     }
 
     public int getId() {

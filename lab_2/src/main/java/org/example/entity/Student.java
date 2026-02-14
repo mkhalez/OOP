@@ -5,37 +5,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Student {
+public class Student extends Person{
     private final int id;
-    private int groupId;
-    private final Map<Integer, Integer> subjectAssessment = new HashMap<>();
+    private Group group;
+    private final Map<Subject, Integer> subjectAssessment = new HashMap<>();
 
-    public Student(int id) {
+    public Student(String firstName, String secondName, int id, Group group) {
+        super(firstName, secondName);
         this.id = id;
+        this.group = group;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getGroupId() {
-        return groupId;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroupId(Group group) {
-        this.groupId = group.getId();
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
-    public Map<Integer, Integer> getSubjectAssessment() {
+    public Map<Subject, Integer> getSubjectAssessment() {
         return subjectAssessment;
     }
 
     public void enrollToSubject(Subject subject) {
-        subjectAssessment.put(subject.getId(), 0);
+        subjectAssessment.put(subject, 0);
     }
 
     public void assignGrade(Grade grade) {
-        subjectAssessment.put(grade.getCourseId(), grade.getValue());
+        subjectAssessment.put(grade.subject(), grade.value());
     }
 
     public double calculateAverageGrade() {
@@ -43,7 +45,7 @@ public class Student {
         int count = 0;
         double averageGrade = 0;
 
-        for(int grade : grades) {
+        for(var grade : grades) {
             if(grade != 0) {
                 averageGrade += grade;
                 count++;

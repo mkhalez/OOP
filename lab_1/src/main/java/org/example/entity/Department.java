@@ -19,24 +19,24 @@ public class Department {
         teacherIds.add(teacher.getId());
     }
 
-    public void removeTeacher(int teacherId) {
-        teacherIds.remove(teacherId);
+    public void removeTeacher(Teacher teacher) {
+        teacherIds.remove(teacher.getId());
     }
 
     public void addStudent(Student student) {
         studentIds.add(student.getId());
     }
 
-    public void removeStudent(int studentId) {
-        studentIds.remove(studentId);
+    public void removeStudent(Student student) {
+        studentIds.remove(student.getId());
     }
 
     public void addSubject(Subject subject) {
         subjectIds.add(subject.getId());
     }
 
-    public void removeSubject(int subjectId) {
-        subjectIds.remove(subjectId);
+    public void removeSubject(Subject subject) {
+        subjectIds.remove(subject.getId());
     }
 
     public int getId() {
