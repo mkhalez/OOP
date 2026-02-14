@@ -4,7 +4,7 @@ class University {
     -id : int
     -name : String
     -facultyIds : List
-    +getFaculties() : void
+    +getFaculties() : List
     +addFaculty(faculty : Faculty) : void
     +removeFaculty(faculty : Faculty) : void 
     +getName() : String 
@@ -78,7 +78,7 @@ class Schedule {
     +getTeacherId() : int 
     +getGroupId() : int 
     +getClassroomId() : int 
-    +getDate() : Date
+    +getDate() : LocalDateTime
     +toString() : String
 }
 
@@ -97,9 +97,8 @@ class Student {
 
 class Subject {
     -id : int 
-    -description : int 
+    -description : String 
     -teacherId : int
-    +setName(id : int) : void
     +setDescription(description : String) : void 
     +setTeacherId(teacher : Teacher) : void 
     +getTeacherId() : int 

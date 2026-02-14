@@ -7,6 +7,7 @@ public class University {
     private final int id;
     private final String name;
     private final List<Faculty> faculties = new ArrayList<>();
+    private final List<Schedule> schedules = new ArrayList<>();
 
     public University(int id, String name) {
         this.id = id;
@@ -23,6 +24,18 @@ public class University {
 
     public void removeFaculty(Faculty faculty) {
         faculties.remove(faculty);
+    }
+
+    public void addSchedule(Schedule schedule) {
+        schedules.add(schedule);
+    }
+
+    public void removeSchedule(Schedule schedule) {
+        schedules.remove(schedule);
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
     }
 
     public Faculty findFacultyByName(String name) {

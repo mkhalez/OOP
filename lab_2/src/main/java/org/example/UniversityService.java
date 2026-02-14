@@ -1,19 +1,23 @@
-package org.example.entity;
+package org.example;
 
-import java.util.Objects;
+import org.example.entity.*;
+import org.example.interfaces.Service;
+import java.time.LocalDateTime;
 
-public class UniversityService {
+public class UniversityService implements Service {
     private University university;
 
     public void createUniversity(int id, String name) {
         university = new University(id, name);
     }
 
+    @Override
     public void createFaculty(String name) {
         Faculty faculty = new Faculty(name);
         university.addFaculty(faculty);
     }
 
+    @Override
     public void createDepartment(int departmentId, String departmentName, String facultyName) {
         Department department = new Department(departmentId, departmentName);
 
@@ -23,8 +27,7 @@ public class UniversityService {
         faculty.addDepartment(department);
     }
 
-
-
+    @Override
     public void createTeacher(int id, String firstName,
                               String lastName,
                               FacultyAndDepartmentNames facultyAndDepartmentNames) {
@@ -36,6 +39,7 @@ public class UniversityService {
         facultyAndDepartment.department().addTeacher(teacher);
     }
 
+    @Override
     public void createSubject(int id, String description,
                              FacultyAndDepartmentNames facultyAndDepartmentNames,
                              int teacherId) {
@@ -55,6 +59,7 @@ public class UniversityService {
         teacher.assignToSubject(subject);
     }
 
+    @Override
     public void createStudent(int id, String firstName, String lastName,
                               FacultyAndDepartmentNames facultyAndDepartmentNames,
                               int groupId) {
@@ -67,6 +72,7 @@ public class UniversityService {
         facultyAndDepartment.department().addStudent(student);
     }
 
+    @Override
     public void enrollStudent(int studentId, int subjectId) {
         Student student = findStudentById(studentId);
         Subject subject = findSubjectById(subjectId);
@@ -76,6 +82,7 @@ public class UniversityService {
         subject.addStudent(student);
     }
 
+    @Override
     public void assignGrade(int teacherId, int studentId, int subjectId, int grade) {
         Student student = findStudentById(studentId);
         Subject subject = findSubjectById(subjectId);
@@ -88,12 +95,54 @@ public class UniversityService {
         teacher.assignGrade(student, subject, grade);
     }
 
-    public double calculateAverageGrade(int studentId) {
+    @Override
+    public <T extends Number> T calculateAverageGrade(int studentId, Class<T> clazz) {
         Student student = findStudentById(studentId);
 
         if(student == null) throw new IllegalArgumentException("student is not found");
 
-        return student.calculateAverageGrade();
+        double average = student.calculateAverageGrade();
+
+        if (clazz == Double.class) {
+            return clazz.cast(average);
+        } else if (clazz == Integer.class) {
+            return clazz.cast((int) Math.round(average));
+        } else if (clazz == Float.class) {
+            return clazz.cast((float) average);
+        } else {
+            throw new IllegalArgumentException("Unsupported type: " + clazz);
+        }
+    }
+
+    @Override
+    public void createSchedule(int id, int subjectId, int teacherId,
+                               int groupId, int classId, int classCapacity) {
+        Subject subject = findSubjectById(subjectId);
+        Teacher teacher = findTeacherById(teacherId);
+        Group group = findGroupById(groupId);
+        Classroom classroom = new Classroom(classId, classCapacity);
+        
+        if(subject == null || teacher == null || group == null) return;
+        
+        Schedule schedule = new Schedule(id, subject, teacher, group, classroom, LocalDateTime.now());
+        university.addSchedule(schedule);
+    }
+
+    @Override
+    public void displaySchedules() {
+        for(var schedule : university.getSchedules()) {
+            System.out.println(schedule);
+        }
+    }
+    
+    private Group findGroupById(int id) {
+        Student student =  university.getFaculties().stream()
+                .flatMap(f -> f.getDepartments().stream())
+                .flatMap(d -> d.getStudents().stream())
+                .filter(s -> s.getGroup().getId() == id)
+                .findFirst().orElse(null);
+        if(student == null) return null;
+        return student.getGroup();
     }
 
     private Teacher findTeacherById(int id) {
@@ -128,7 +177,7 @@ public class UniversityService {
         Faculty faculty = university.findFacultyByName(facultyAndDepartment.facultyName());
         if(faculty == null) return null;
 
-        Department department = faculty.findDepartmentByName(facultyAndDepartment.departmentName());
+        Department department = faculty.findDepartment(facultyAndDepartment.departmentName());
         if(department == null) return null;
 
         return new FacultyAndDepartment(faculty, department);

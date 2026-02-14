@@ -28,11 +28,6 @@ public class Faculty {
         return departments;
     }
 
-    public Department findDepartmentByName(String name) {
-        return departments.stream().filter(department -> department.getName()
-                .equals(name)).findFirst().orElse(null);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -46,7 +41,6 @@ public class Faculty {
     }
 
     public Teacher getTeacherById(int id) {
-
         return departments.stream()
                 .flatMap(d -> d.getTeachers().stream())
                 .filter(t -> t.getId() == id).

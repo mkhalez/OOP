@@ -10,10 +10,6 @@ public class Subject {
         this.description = description;
     }
 
-    public void setName(int id) {
-        this.id = id;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }

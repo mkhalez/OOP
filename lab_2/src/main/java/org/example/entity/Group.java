@@ -24,7 +24,7 @@ public class Group {
         students.remove(student);
     }
 
-    public List<Student> getStudentIds() {
+    public List<Student> getStudents() {
         return students;
     }
 

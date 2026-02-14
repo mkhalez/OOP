@@ -1,11 +1,12 @@
 package org.example.scenario;
 
 import org.example.entity.FacultyAndDepartmentNames;
-import org.example.entity.UniversityService;
+import org.example.UniversityService;
+import org.example.interfaces.Service;
 
 public class DemoScenario {
     public void Run() {
-        UniversityService service = new UniversityService();
+        Service service = new UniversityService();
 
         service.createUniversity(1, "BSUIR");
         service.createFaculty("FCSaN");
@@ -24,8 +25,11 @@ public class DemoScenario {
         service.enrollStudent(1, 2);
         service.assignGrade(1, 1, 2, 8);
 
-        double averageGrade = service.calculateAverageGrade(1);
+        int averageGrade = service.calculateAverageGrade(1, Integer.class);
 
-        System.out.println(averageGrade);
+        service.createSchedule(1, 1, 1, 453503, 1, 30);
+        service.displaySchedules();
+
+        System.out.println("Average grade of student id " + 1 +": " + averageGrade);
     }
 }
