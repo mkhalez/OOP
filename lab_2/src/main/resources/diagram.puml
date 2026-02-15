@@ -202,4 +202,28 @@ class DemoScenario {
 }
 
 
+Departament o-- Teacher
+Departament o-- Student
+Departament o-- Subject
+Faculty *-- Departament
+FacultyAndDepartment *-- Departament
+FacultyAndDepartment *-- Faculty
+Grade *-- Subject
+Group o-- Student
+Schedule o-- Subject
+Schedule o-- Teacher
+Schedule o-- Group
+Schedule *-- Classroom
+Person <|-- Student
+Person <|-- Teacher
+Student o-- Subject
+Student o-- Group
+Subject o-- Teacher
+Subject o-- Student 
+Teacher o-- Subject
+University *-- Faculty
+University *-- Schedule
+Service <|.. UniversityService
+UniversityService *-- University
+
 @enduml
