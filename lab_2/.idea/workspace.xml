@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f614589-f653-4703-9099-2845a012c00a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/diagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UniversityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UniversityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/interfaces/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/interfaces/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/scenario/DemoScenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/scenario/DemoScenario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>

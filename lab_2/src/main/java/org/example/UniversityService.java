@@ -3,6 +3,7 @@ package org.example;
 import org.example.entity.*;
 import org.example.interfaces.Service;
 import java.time.LocalDateTime;
+import java.util.function.Function;
 
 public class UniversityService implements Service {
     private University university;
@@ -96,22 +97,16 @@ public class UniversityService implements Service {
     }
 
     @Override
-    public <T extends Number> T calculateAverageGrade(int studentId, Class<T> clazz) {
+    public <T extends Number> T calculateAverageGrade(
+            int studentId,
+            Function<Double, T> converter) {
         Student student = findStudentById(studentId);
 
         if(student == null) throw new IllegalArgumentException("student is not found");
 
         double average = student.calculateAverageGrade();
 
-        if (clazz == Double.class) {
-            return clazz.cast(average);
-        } else if (clazz == Integer.class) {
-            return clazz.cast((int) Math.round(average));
-        } else if (clazz == Float.class) {
-            return clazz.cast((float) average);
-        } else {
-            throw new IllegalArgumentException("Unsupported type: " + clazz);
-        }
+        return converter.apply(average);
     }
 
     @Override

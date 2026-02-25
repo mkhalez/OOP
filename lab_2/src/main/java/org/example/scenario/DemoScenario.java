@@ -5,8 +5,7 @@ import org.example.UniversityService;
 import org.example.interfaces.Service;
 
 public class DemoScenario {
-    public void Run() {
-        Service service = new UniversityService();
+    public void Run(Service service) {
 
         service.createUniversity(1, "BSUIR");
         service.createFaculty("FCSaN");
@@ -23,9 +22,9 @@ public class DemoScenario {
 
         service.createSubject(2, "Math", facultyAndDepartmentNames, 1);
         service.enrollStudent(1, 2);
-        service.assignGrade(1, 1, 2, 8);
+        service.assignGrade(1, 1, 2, 9);
 
-        int averageGrade = service.calculateAverageGrade(1, Integer.class);
+        int averageGrade = service.calculateAverageGrade(1, Double::intValue);
 
         service.createSchedule(1, 1, 1, 453503, 1, 30);
         service.displaySchedules();
