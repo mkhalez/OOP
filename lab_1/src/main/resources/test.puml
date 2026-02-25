@@ -1,0 +1,98 @@
+@startuml
+
+class University {
+    -id : int
+    -name : String
+    +getName() : String
+    +getId() : int
+    +addFaculty(faculty : Faculty) : void
+}
+
+class Faculty {
+    -id : int
+    -name : String
+    +getId() : int
+    +getName() : String
+    +addDepartment(department : Department) : void
+}
+
+class Department {
+    -id : int
+    -name : String
+    +getId() : int
+    +getName() : String
+    +assignTeacher(teacher : Teacher) : void
+}
+
+class Classroom {
+    -id : int
+    -capacity : int
+    -isFree : boolean
+    +getId() : int
+    +getCapacity() : int
+    +isFree() : boolean
+    +setFree(free : boolean) : void
+}
+
+class Subject {
+    -id : int
+    -description : String
+    +setDescription(description : String) : void
+    +getId() : int
+    +getDescription() : String
+}
+
+class Grade {
+    -id : int
+    -value : int
+    -subjectDescription : String
+    +getCourseId() : int
+    +getValue() : int
+    +getSubjectDescription() : String
+}
+
+class Group {
+    -id : int
+    +getId() : int
+    +addStudent(student : Student) : void
+}
+
+class Student {
+    -id : int
+    -groupId : int
+    -generalRating : int
+    +getId() : int
+    +addGrade(grade : Grade) : void
+    +getGeneralRating() : int
+    +setGeneralRating(generalRating : int) : void
+}
+
+class Teacher {
+    -id : int
+    +getId() : int
+    +setGradeToStudent(student : Student, grade : Grade) : void
+    +teach(subject : Subject) : void
+}
+
+class Schedule {
+    -id : int
+    +getId() : int
+    +makeClassBusy(classroom : Classroom, subject : Subject, group : Group) : void
+}
+
+University ..> Faculty
+Faculty ..> Department
+Department ..> Teacher
+
+Group ..> Student
+Student ..> Grade
+Grade ..> Subject
+
+Teacher ..> Student
+Teacher ..> Subject
+
+Schedule ..> Classroom
+Schedule ..> Subject
+Schedule ..> Group
+
+@enduml

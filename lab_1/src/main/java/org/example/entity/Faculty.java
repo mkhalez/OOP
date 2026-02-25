@@ -6,7 +6,6 @@ import java.util.List;
 public class Faculty {
     private final int id;
     private final String name;
-    private final List<Integer> departmentIds = new ArrayList<>();
 
     public Faculty(int id, String name) {
         this.id = id;
@@ -22,14 +21,6 @@ public class Faculty {
     }
 
     public void addDepartment(Department department) {
-        departmentIds.add(department.getId());
-    }
-
-    public void removeDepartment(int departmentId) {
-        departmentIds.remove(departmentId);
-    }
-
-    public List<Integer> getDepartmentIds() {
-        return departmentIds;
+        System.out.println("Department " + department.getName() + " added to faculty " + name);
     }
 }

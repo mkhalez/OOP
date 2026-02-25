@@ -3,10 +3,12 @@ package org.example.entity;
 public class Grade {
     private final int id;
     private final int value;
+    private final String subjectDescription;
 
-    public Grade(int subjectId, int value) {
-        this.id = subjectId;
+    public Grade(Subject subject, int value) {
+        this.id = subject.getId();
         this.value = value;
+        this.subjectDescription = subject.getDescription();
     }
 
     public int getCourseId() {
@@ -15,5 +17,9 @@ public class Grade {
 
     public int getValue() {
         return value;
+    }
+
+    public String getSubjectDescription() {
+        return subjectDescription;
     }
 }

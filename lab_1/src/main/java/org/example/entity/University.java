@@ -6,23 +6,10 @@ import java.util.List;
 public class University {
     private final int id;
     private final String name;
-    private final List<Integer> facultyIds = new ArrayList<>();
 
     public University(int id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public List<Integer> getFaculties() {
-        return facultyIds;
-    }
-
-    public void addFaculty(Faculty faculty) {
-        facultyIds.add(faculty.getId());
-    }
-
-    public void removeFaculty(int facultyId) {
-        facultyIds.remove(facultyId);
     }
 
     public String getName() {
@@ -33,7 +20,7 @@ public class University {
         return id;
     }
 
-    public List<Integer> getFacultyIds() {
-        return facultyIds;
+    public void addFaculty(Faculty faculty) {
+        System.out.println("Faculty " + faculty.getName() + " added to university " + name);
     }
 }

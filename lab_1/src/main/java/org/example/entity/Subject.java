@@ -3,7 +3,6 @@ package org.example.entity;
 public class Subject {
     private int id;
     private String description;
-    private int teacherId;
 
     public Subject(int id, String description) {
         this.id = id;
@@ -12,14 +11,6 @@ public class Subject {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public int getTeacherId() {
-        return teacherId;
     }
 
     public int getId() {

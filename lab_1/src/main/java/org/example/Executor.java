@@ -1,7 +1,6 @@
 package org.example;
 
 import org.example.entity.*;
-import java.time.LocalDateTime;
 
 public class Executor {
     public void Run() {
@@ -13,31 +12,20 @@ public class Executor {
         Department department = new Department(1, "Informatics");
         faculty.addDepartment(department);
 
-        Group group = new Group(1);
-        Student student = new Student(1);
-        department.addStudent(student);
-        group.addStudent(student);
-        student.setGroupId(group);
-
         Teacher teacher = new Teacher(1);
-        department.addTeacher(teacher);
-        Subject firstSubject = new Subject(1, "math");
-        department.addSubject(firstSubject);
-        teacher.assignToSubject(firstSubject);
-        student.enrollToSubject(firstSubject);
-        teacher.assignGrade(student, firstSubject, 9);
 
-        Subject secondSubject = new Subject(2, "oop");
-        department.addSubject(secondSubject);
-        teacher.assignToSubject(secondSubject);
-        student.enrollToSubject(secondSubject);
-        teacher.assignGrade(student, secondSubject, 7);
+        faculty.addDepartment(department);
+        department.assignTeacher(teacher);
 
-        System.out.println("Average grade: " + student.calculateAverageGrade());
+        Student student = new Student(1);
+        Subject subject = new Subject(1, "math");
+        Grade grade = new Grade(subject, 9);
+        teacher.setGradeToStudent(student, grade);
 
         Classroom classroom = new Classroom(1, 30);
-        Schedule schedule = new Schedule(1, firstSubject, teacher, group, classroom, LocalDateTime.now());
-        System.out.println(schedule);
-
+        Schedule schedule = new Schedule(1);
+        Group group = new Group(1);
+        group.addStudent(student);
+        schedule.makeClassBusy(classroom, subject, group);
     }
 }
